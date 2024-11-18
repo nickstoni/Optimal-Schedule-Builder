@@ -27,7 +27,6 @@ public interface CourseRepository extends JpaRepository<Course, Long>{
     List<Course> findAllBySubject(String subject);
 
     // Gets all courses by a certain credit hour
-    // The creditHours placeholder in the query is linked to the method parameter using @Param
     @Query("SELECT c FROM Course c JOIN c.courseSections cs WHERE cs.creditHoursLow <= :creditHours AND cs.creditHoursHigh >= :creditHours")
-    List<Course> getCoursesByCreditHours(@Param("creditHours") double creditHours);
+    List<Course> getCoursesByCreditHours(double creditHours);
 }
